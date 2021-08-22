@@ -1,1 +1,48 @@
-<p>selection-sort-container works!</p>
+<div class="container">
+  <h3>
+    Insertion Sort Representation
+  </h3>
+  <div>
+    <h5>
+      Unsorted Array
+    </h5>
+    <div class="col-12">
+      <div class="d-flex my-5">
+        <div class="col-4">
+
+        </div>
+        <div class="col-8">
+          <ng-container *ngFor="let item of initialModel">
+            <span style="min-width: 50px;" class="py-3 px-3 mx-1 border border-primary">{{item.value}}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <ng-container *ngIf="Steps">
+      <h5>Sorting Steps</h5>
+      <ng-container *ngFor="let items of Steps; let i = index">
+        <ng-container *ngIf="items">
+          <div class="d-flex mt-3 py-3">
+            <div class="col-4">
+              <div class="d-flex justify-content-end">
+                <h5 class="mx-3">Step {{i+1}}</h5>
+              </div>
+            </div>
+            <div class="col-8">
+              <ng-container *ngFor="let item of items">
+                <span style="min-width: 50px;" class="py-3 px-3 mx-1 border border-primary text-align-center">{{item.value}}</span>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="border border-secondary p-3 mt-3">
+    <button class="my-3 mx-1 btn btn-primary" (click)="stepFoward()">Next Step</button>
+    <button class="my-3 mx-1 btn btn-success" (click)="stepFoward()">Sort</button>
+    <button class="my-3 mx-1 btn btn-secondary" (click)="stepFoward()">Reset</button>
+  </div>
+</div>
