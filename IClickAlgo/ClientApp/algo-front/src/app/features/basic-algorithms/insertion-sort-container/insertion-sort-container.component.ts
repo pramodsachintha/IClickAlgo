@@ -5,11 +5,11 @@ import { BlockElementGenerationService } from 'src/app/core/services/block-eleme
 import { BlockContainerComponent } from 'src/app/shared/block-container/block-container.component';
 import { find, pull, filter, times, constant, debounce, set, get, keyBy, reduce, cloneDeep, sortedUniq } from 'lodash';
 @Component({
-  selector: 'algo-selection-sort-container',
-  templateUrl: './selection-sort-container.component.html',
-  styleUrls: ['./selection-sort-container.component.scss']
+  selector: 'algo-insertion-sort-container',
+  templateUrl: './insertion-sort-container.component.html',
+  styleUrls: ['./insertion-sort-container.component.scss']
 })
-export class SelectionSortContainerComponent extends BlockContainerComponent<BlockElement> implements OnInit {
+export class InsertionSortContainerComponent extends BlockContainerComponent<BlockElement> implements OnInit {
 
   // iterationIndex = 1;
   initialModel : Array<BlockElement> = [];

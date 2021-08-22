@@ -21,6 +21,12 @@ export class BlockContainerComponent<T> implements OnInit {
     this.iterationIndex = 0;
   }
 
+  protected resetSteps(): void {
+    this._model = [];
+    this.iterationIndex = 1;
+    this.steps = [];
+  }
+
   constructor() { }
 
   ngOnInit(): void {
