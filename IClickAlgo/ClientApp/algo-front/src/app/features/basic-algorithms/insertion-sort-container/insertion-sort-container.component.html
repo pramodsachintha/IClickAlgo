@@ -14,7 +14,8 @@
         </div>
         <div class="col-8">
           <ng-container *ngFor="let item of initialModel">
-            <span style="min-width: 50px;" class="py-3 px-3 mx-1 border border-primary">{{item.value}}</span>
+            <algo-block-element [Model]="item">
+            </algo-block-element>
           </ng-container>
         </div>
       </div>
@@ -34,8 +35,9 @@
               </div>
             </div>
             <div class="col-8">
-              <ng-container *ngFor="let item of items">
-                <span style="min-width: 50px;" class="py-3 px-3 mx-1 border border-primary text-align-center">{{item.value}}</span>
+              <ng-container *ngFor="let item of items.step">
+                <algo-block-element [Model]="item" [IterationIndex]="items.iterartionIndex">
+                </algo-block-element>
               </ng-container>
             </div>
           </div>

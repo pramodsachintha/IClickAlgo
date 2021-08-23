@@ -7,7 +7,8 @@ import { SelectionSortContainerComponent } from './selection-sort-container/sele
 
 const routes: Routes = [
   { path: '', component: BasicAlgorithmsComponent },
-  { path: 'insertion-sort', component: InsertionSortContainerComponent}
+  { path: 'insertion-sort', component: InsertionSortContainerComponent},
+  { path: 'selection-sort', component: SelectionSortContainerComponent}
 ];
 
 @NgModule({

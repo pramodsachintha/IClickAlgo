@@ -9,7 +9,7 @@ export class BlockContainerComponent<T> implements OnInit {
 
   protected _model?: Array<T> ;
 
-  protected steps?: Array<Array<T>> ;
+  protected steps?: Array<{step:Array<T>, iterartionIndex: number}> ;
 
   protected iterationIndex = 1;
 

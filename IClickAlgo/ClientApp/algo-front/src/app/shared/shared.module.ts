@@ -10,6 +10,9 @@ import { BlockElementComponent } from './block-element/block-element.component';
   declarations: [BasicAlgoLayoutComponent, BlockContainerComponent, BlockElementComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    BlockElementComponent
   ]
 })
 export class SharedModule { }

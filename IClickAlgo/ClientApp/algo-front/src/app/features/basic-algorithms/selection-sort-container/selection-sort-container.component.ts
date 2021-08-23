@@ -23,6 +23,7 @@ export class SelectionSortContainerComponent extends BlockContainerComponent<Blo
   }
 
   init(): void {
+    this.iterationIndex = 0;
     this.initialModel = this.generationService.generateBlocks(10);
     this._model = cloneDeep(this.initialModel);
   }
@@ -37,8 +38,9 @@ export class SelectionSortContainerComponent extends BlockContainerComponent<Blo
 
   stepFoward(): void {
     if(this._model) {
-        this.steps = [...this.steps || [], cloneDeep(this._model)];
+        this.steps = [...this.steps || [], {step: cloneDeep(this._model), iterartionIndex: this.iterationIndex}];
     }
+    console.log(this.steps);
     this._model = this.iterate(this.sortingFn);
     if (this._model) {
       this._model =  this._model.sort((item1, item2) => {
@@ -56,23 +58,24 @@ export class SelectionSortContainerComponent extends BlockContainerComponent<Blo
   }
 
   sortingFn = (blocks?: Array<BlockElement>): Array<BlockElement> => {
-
+    let minimum = {} as BlockElement;
     if (blocks) {
 
       if (this.iterationIndex > blocks?.length -1) {
         //reset iteration index
         return blocks;
       }
-      for (let index = this.iterationIndex; index > 0; index--) {
-        const [firstElement] = blocks.filter(el => el.order === index);
-        const [secondElemenet] = blocks.filter(el => el.order === index - 1);
-        if (firstElement.value <  secondElemenet.value) {
-          console.log(blocks[index].value);
-          const temp = firstElement.order;
-          firstElement.order = secondElemenet.order;
-          secondElemenet.order = temp;
+      const [currentElement] = blocks.filter(el => el.order === this.iterationIndex);
+      minimum = currentElement;
+      for (let index = this.iterationIndex + 1; index < blocks?.length-1; index++) {
+        const [nextElemenet] = blocks.filter(el => el.order === index);
+        if (nextElemenet.value <  minimum.value) {
+          minimum = nextElemenet;
         }
       }
+      const temp = minimum.order;
+      minimum.order = currentElement.order;
+      currentElement.order = temp;
       this.iterationIndex++;
       return blocks;
     }

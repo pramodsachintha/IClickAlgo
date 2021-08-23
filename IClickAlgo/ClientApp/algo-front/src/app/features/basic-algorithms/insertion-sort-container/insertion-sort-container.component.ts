@@ -37,7 +37,7 @@ export class InsertionSortContainerComponent extends BlockContainerComponent<Blo
 
   stepFoward(): void {
     if(this._model) {
-        this.steps = [...this.steps || [], cloneDeep(this._model)];
+      this.steps = [...this.steps || [], {step: cloneDeep(this._model), iterartionIndex: this.iterationIndex}];
     }
     this._model = this.iterate(this.sortingFn);
     if (this._model) {
@@ -67,7 +67,6 @@ export class InsertionSortContainerComponent extends BlockContainerComponent<Blo
         const [firstElement] = blocks.filter(el => el.order === index);
         const [secondElemenet] = blocks.filter(el => el.order === index - 1);
         if (firstElement.value <  secondElemenet.value) {
-          console.log(blocks[index].value);
           const temp = firstElement.order;
           firstElement.order = secondElemenet.order;
           secondElemenet.order = temp;
